@@ -1,0 +1,818 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* -webkit-appearance: none !important;*/
+  outline:none;
+}
+body{
+  font-size:10px;
+}
+#pageContent {
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-size: cover;
+  overflow:hidden;
+  font-family: "Microsoft YaHei",微软雅黑;
+}
+
+/* create mistery */
+
+.ui_page{
+  position:absolute;left:0;top:0;
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+}
+
+.ui_view_transitioning,
+.ui_view_transitioning .ui_page{
+  /*background: url('../images/index-bj.jpg') no-repeat center;*/
+  width:100%;height:100%;overflow:hidden;
+  -webkit-box-sizing:border-box;box-sizing:border-box;
+}
+
+.show{display:block !important;}
+.hide{display:none !important;}
+
+.in,.out{
+  /* 开启硬件加速 */
+  -webkit-transform:translateZ(0); transform:translateZ(0);
+  -webkit-animation-timing-function: ease-out;animation-timing-function: ease-out;
+  -webkit-animation-duration: 350ms;animation-duration:350ms;
+}
+
+.initLeft_100{
+  -webkit-transform:translate3d(100%,0,0); transform:translate3d(100%,0,0);
+}
+.translate{
+  -webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  -webkit-box-sizing:border-box;box-sizing:border-box;
+  -webkit-transform-style:preserve-3d;transform-style:preserve-3d;
+}
+
+.slide.in,.cover.in{
+  -webkit-transform: translate3d(100%,0,0);transform: translate3d(100%,0,0);
+  -webkit-animation-name: slide_in_from_left;animation-name: slide_in_from_left;
+}
+.slide.out{
+  -webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);
+  -webkit-animation-name: slide_out_from_left;animation-name: slide_out_from_left;
+}
+@keyframes slide_out_from_left{
+  to{-webkit-transform: translate3d(-100%,0,0);transform: translate3d(-100%,0,0);}
+}
+@-webkit-keyframes slide_out_from_left{
+  to{-webkit-transform: translate3d(-100%,0,0);transform: translate3d(-100%,0,0);}
+}
+@keyframes slide_in_from_left{
+  to {-webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);}
+}
+@-webkit-keyframes slide_in_from_left{
+  to {-webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);}
+}
+
+.slide.in.reverse{
+  -webkit-transform: translate3d(-100%,0,0);transform: translate3d(-100%,0,0);
+  -webkit-animation-name: slide_in_from_right;animation-name: slide_in_from_right;
+}
+.slide.out.reverse,.cover.out.reverse{
+  -webkit-transform: translate3d(0,0,0); transform:translate3d(0,0,0);
+  -webkit-animation-name: slide_out_from_right;animation-name: slide_out_from_right;
+}
+@-webkit-keyframes slide_in_from_right{
+  to{-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+}
+@keyframes slide_in_from_right{
+  to{-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+}
+
+@-webkit-keyframes slide_out_from_right{
+  to{-webkit-transform: translate3d(100%,0,0);transform: translate3d(100%,0,0);}
+}
+@keyframes slide_out_from_right{
+  to{-webkit-transform: translate3d(100%,0,0);transform: translate3d(100%,0,0);}
+}
+
+.gemini{
+  -webkit-transition: translate3d(-50%, -10%, 0px) scale3d(0.5, 0.5, 0.5);transition:translate3d(-50%, -10%, 0px) scale3d(.5,.5,.5);
+}
+.gemini.in{
+  -webkit-transform: translate3d(60%,0,0) perspective(200px) rotateY(-15deg);transform: translate3d(60%,0,0) perspective(200px) rotateY(-15deg);
+  -webkit-animation-name: gemini_in_;animation-name: gemini_in_;
+}
+.gemini.out{
+  transform: translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 0.5);-webkit-transform: translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 0.5);
+  -webkit-animation-name: gemini_out_;animation-name: gemini_out_;
+}
+@keyframes gemini_in_{
+  to{-webkit-transform: translate3d(0,0,0) perspective(0px) rotateY(0);transform: translate3d(0,0,0) perspective(0px) rotateY(0);}
+}
+@-webkit-keyframes gemini_in_{
+  to{-webkit-transform: translate3d(0,0,0) perspective(0px) rotateY(0);transform: translate3d(0,0,0) perspective(0px) rotateY(0);}
+}
+@keyframes gemini_out_{
+  to{transform: translate3d(-50%, -10%, 0px) scale3d(0.5, 0.5, 0.5);-webkit-transform: translate3d(-50%, -10%, 0px) scale3d(0.5, 0.5, 0.5);}
+}
+@-webkit-keyframes gemini_out_{
+  to{transform: translate3d(-50%, -10%, 0px) scale3d(0.5, 0.5, 0.5);-webkit-transform: translate3d(-50%, -10%, 0px) scale3d(0.5, 0.5, 0.5);}
+}
+
+
+/*  fide animation  */
+.fide.in{
+//	-webkit-filter: opacity(0);
+//	-o-filter:opacity(0);
+//	-moz-filter:opacity(0);
+  opacity: 0;
+  -webkit-animation-name:fide_in;
+  animation-name:fide_in;
+}
+.fide.out{
+//	-webkit-filter:opacity(1);
+//	-o-filter:opacity(1);
+//	-moz-filter:opacity(1);
+  opacity: 1;
+  -webkit-animation-name:fide_out;
+  animation-name:fide-out;
+}
+@keyframes fide_in{
+  to{
+  //      -webkit-filter:opacity(1);-o-filter:opacity(1);-moz-filter:opacity(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fide_in{
+  to{
+  //      -webkit-filter:opacity(1);-o-filter:opacity(1);-moz-filter:opacity(1);
+    opacity: 1;
+  }
+}
+@keyframes fide_out{
+  to{
+  //      -webkit-filter: opacity(0);-o-filter:opacity(0);-moz-filter:opacity(0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fide_out{
+  to{
+  //      -webkit-filter: opacity(0);-o-filter:opacity(0);-moz-filter:opacity(0);
+    opacity: 0;
+  }
+}
+
+/*  cover  */
+/*  .cover.in  share  slider.in */
+.cover.out{
+  -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);
+  -webkit-animation-name: cover_out_to_left;animation-name: cover_out_to_left;
+}
+@keyframes cover_out_to_left{
+  to{-webkit-transform:translate3d(-15%,0,0);transform:translate3d(-15%,0,0);}
+}
+@-webkit-keyframes cover_out_to_left{
+  to{-webkit-transform:translate3d(-15%,0,0);transform:translate3d(-15%,0,0);}
+}
+/* .cover.out.reverse share slider.out.reverse */
+.cover.in.reverse{
+  -webkit-transform:translate3d(-15%,0,0);transform:translate3d(-15%,0,0);
+  -webkit-animation-name: cover_out_to_right; animation-name: cover_out_to_right;
+}
+@keyframes cover_out_to_right{
+  to{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+}
+@-webkit-keyframes cover_out_to_right{
+  to{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+}
+
+.scaleBox.in{
+  -webkit-transform:translate3d(0,0,0) scale3d(0.5, 0.5, 0.5);transform:translate3d(0,0,0) scale3d(0.5, 0.5, 0.5);
+  opacity: .1;
+  -webkit-animation-name: scaleBox_in_from_scale;animation-name: scaleBox_in_from_scale;
+}
+@-webkit-keyframes scaleBox_in_from_scale{
+  to{-webkit-transform:translate3d(0,0,0) scale3d(1, 1, 1); transform:translate3d(0,0,0) scale3d(1, 1, 1); opacity:1;}
+}
+.scaleBox.out{
+  -webkit-animation-duration: 50ms;animation-duration:50ms;
+  opacity: 1;
+  -webkit-animation-name: scaleBox_out_from_scale;
+}
+@-webkit-keyframes scaleBox_out_from_scale{
+  to{opacity: .89999;}
+}
+
+.scaleBox.in.reverse{
+  -webkit-transform:translate3d(0,0,0) scale3d(1, 1, 1); transform:translate3d(0,0,0) scale3d(1, 1, 1);
+  opacity: .89999;
+  -webkit-animation-name: scaleBox_in_from_scale_reverse; animation-name: scaleBox_in_from_scale_reverse;
+}
+@-webkit-keyframes scaleBox_in_from_scale_reverse{
+  to{opacity: 1;}
+}
+.scaleBox.out.reverse{
+  -webkit-transform:translate3d(0,0,0) scale3d(1, 1, 1); transform:translate3d(0,0,0) scale3d(1, 1, 1);
+  opacity: 1;
+  -webkit-animation-name: scaleBox_out_from_scale_reverse; animation-name: scaleBox_out_from_scale_reverse;
+}
+@-webkit-keyframes scaleBox_out_from_scale_reverse{
+  to{-webkit-transform:translate3d(0,0,0) scale3d(0.5, 0.5, 0.5);
+    transform:translate3d(0,0,0) scale3d(0.5, 0.5, 0.5);opacity:.1;}
+}
+/*by guYY*/
+.fadeBox.in{
+  opacity: .1;//.1;
+  -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);
+  -webkit-animation-name: fadeBox_in_from_scale; animation-name: fadeBox_in_from_scale;
+}
+@-webkit-keyframes fadeBox_in_from_scale{
+  from{
+    opacity: .1;
+  }
+  to{
+    opacity:1;
+  }
+}
+.fadeBox.out{
+  opacity: .1;
+  -webkit-animation-name: fadeBox_out_from_scale; animation-name: fadeBox_out_from_scale;
+}
+@-webkit-keyframes fadeBox_out_from_scale{
+  from{
+    opacity:1;
+  }
+  to{
+    opacity:0;
+  }
+}
+
+.fadeBox.in.reverse{
+  -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);
+  opacity: .1;//.89999;
+  -webkit-animation-name: fadeBox_in_from_scale_reverse;animation-name: fadeBox_in_from_scale_reverse;
+}
+@-webkit-keyframes fadeBox_in_from_scale_reverse{
+  from{
+    opacity: .1;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.fadeBox.out.reverse{
+  opacity: .1;
+  -webkit-animation-name: fadeBox_out_from_scale_reverse;animation-name: fadeBox_out_from_scale_reverse;
+}
+@-webkit-keyframes fadeBox_out_from_scale_reverse{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: .1;
+  }
+}
+
+/******************************************    home页样式    **************************************************/
+#home{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "Microsoft YaHei",微软雅黑;
+}
+#title{
+  width: 100%;
+  height: 180px;
+  background: url("../images/logo.png") 42px 22px no-repeat #cfdbed;
+  /*background-color: #CFDBEC*/
+}
+#third-back, #qr-code, #book-type-qr-code{
+  height: 100px;
+  width: 100px;
+  float: right;
+  margin-top: 40px;
+  margin-right: 42px;
+}
+#third-back{
+}
+#qr-code{
+}
+#qr-text{
+  height: 100px;
+  width: 106px;
+  float: right;
+  font-size: 2.4em;
+  margin-top: 40px;
+  margin-right: 32px;
+  padding: 22px 0;
+  letter-spacing: 2.4px;
+  text-align: center;
+  color: #333333;
+}
+#title-space{
+  width: 100%;
+  height: 16px;
+  background-color: #FFFFFF
+}
+#banner{
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: #CFDBEC;
+  overflow: hidden;
+}
+#banner-index{
+  position: absolute;
+  height: 24px;
+  /*width: 156px;*/
+  /*margin-left: calc(50% - 78px);*/
+  margin-top: -56px;
+}
+.banner-index-point{
+  width: 24px;
+  height: 24px;
+  background: rgba(0,0,0,0.5);
+  float: left;
+  border-radius: 100%;
+  border: 3px solid rgba(255,255,255, 0.5);
+  margin-right: 42px;
+  transition: all 500ms;
+}
+.banner-index-point:last-of-type{
+  margin-right: 0px;
+}
+.banner-index-point-selected{
+  background: rgba(255,255,255,0.5);
+  border: none;
+}
+.type{
+  position: relative;
+  width: 100%;
+  /*height: 300px;*/
+  /*display: none;*/
+  background-color: #f8fafd;
+  padding-top: 66px;
+  padding-right: 120px;
+  padding-bottom: 40px;
+  display: none;
+}
+.type-icon{
+  position: relative;
+  left: 184px;
+  top: -84px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #fff;
+}
+.type-name{
+  height: 72px;
+  width: 200px;
+  border-radius: 10px;
+  font-size: 3.2em;
+  color: #666666;
+  text-align:center;
+  line-height: 72px;
+  margin-left: 120px;
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  display: inline-block;
+  box-shadow: 0 5px 7px rgba(204,204,204,0.5);
+  overflow: hidden;
+}
+.type-selected{
+  background-color: #f96621;
+  color: #ffffff;
+  box-shadow: none;
+}
+#book,#newspaper,#journals{
+  width: 100%;
+  height: 300px;
+  padding-left: 437px;
+  font-size: 7.0em;
+  letter-spacing: -1.4px;
+  line-height: 300px;
+  color: #ffffff;
+  font-weight: bold;
+}
+#book{
+  background: url("../images/book.png") 66px 26px no-repeat #769ad1;
+}
+#book-type{
+  width: 100%;
+  /*height: 300px;*/
+}
+#newspaper{
+  width: 100%;
+  height: 300px;
+  background: url("../images/newspaper.png") 66px 26px no-repeat #8bacdd;
+
+}
+#newspaper-type{
+  width: 100%;
+  /*height: 300px;*/
+}
+#journals{
+  background: url("../images/journals.png") 66px 26px no-repeat #9cb9e4
+}
+#journals-type{
+  width: 100%;
+  /*height: 300px;*/
+}
+#recommend{
+  width: 100%;
+  height: 1860px;
+  background: #759fde;
+  padding-top: 66px;
+}
+.recommend-thing{
+  width: 100%;
+  height: 532px;
+  margin-bottom: 66px;
+  /*background: green;*/
+}
+.recommend-title{
+  height: 32px;
+  width: 100%;
+  padding-left: 42px;
+  color: #ffffff;
+  font-size: 3.2em;
+  font-weight: bold;
+  vertical-align: top;
+}
+.recommend-content{
+  height: 388px;
+  width: 948px;
+  background: url("../images/longBookShelf.png") center bottom no-repeat;
+  padding-left: 57px;
+  padding-right: 57px;
+  margin: 42px auto 0;
+}
+.recommend-footer{
+  height: 62px;
+  width: 948px;
+  padding-left: 57px;
+  padding-right: 57px;
+  margin: 0 auto;
+}
+.recommend-01,.recommend-02,.recommend-03{
+  width: 230px;
+  height: 326px;
+  float: left;
+  background: no-repeat center;
+  background-size: cover;
+}
+.recommend-02{
+  margin:auto 72px;
+}
+.recommend-01-describe,.recommend-02-describe,.recommend-03-describe{
+  height: 62px;
+  width: 230px;
+  float: left;
+}
+.recommend-02-describe{
+  margin: auto 72px;
+}
+.book-name{
+  font-size: 2.4em;
+  text-align: center;
+  color: #ffffff;
+}
+.book-author{
+  font-size: 1.8em;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/******************************************    book页样式    **************************************************/
+#books{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-family: "Microsoft YaHei",微软雅黑;
+  background: #759fde;
+}
+#title-btn{
+  height: 180px;
+  width: 100%;
+  padding-top: 42px;
+  padding-bottom: 72px;
+  background-color: #759fde;
+}
+.btn{
+  height: 66px;
+  width: 200px;
+  color: #333333;
+  background: #ffffff;
+  font-size: 2.8em;
+  line-height: 66px;
+  text-align: center;
+  border-radius: 10px;
+}
+#back{
+  float: left;
+  margin-left: 66px;
+}
+#book-search{
+  float: right;
+  margin-right: 66px;
+}
+#book-class{
+  float: right;
+  margin-right: 42px;
+}
+#book-float-layout{
+  display:none;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+#book-search-detail, #book-class-detail{
+  position: absolute;
+  border-radius: 10px;
+  background: #ffffff;
+  right: 66px;
+  top: 346px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+#book-class-detail{
+  display:none;
+  width: 984px;
+  padding-top: 66px;
+  padding-right: 87px;
+  padding-bottom: 36px;
+}
+#book-search-detail{
+  display:none;
+  height: 1198px;
+  width: 200px;
+  padding: 32px 8px;
+
+}
+
+.book-class-icon{
+  position: absolute;
+  top: -18px;
+  right: 332px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #fff;
+}
+
+.book-search-icon{
+  position: absolute;
+  top: -18px;
+  right: 90px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #fff;
+}
+
+#type-content{
+  position: relative;
+  width: 100%;
+  height: 1496px;
+  overflow: hidden;
+}
+.type-page{
+  height: 100%;
+  width: 100%;
+  padding-left: 66px;
+  padding-right: 66px;
+  padding-bottom: 20px;
+}
+.type-bookshelf{
+  height: 450px;
+  width: 100%;
+  margin-bottom: 42px;
+}
+.type-img-content{
+  height: 388px;
+  width: 948px;
+  background: url("../images/longBookShelf.png") center bottom no-repeat;
+  padding-left: 57px;
+  padding-right: 57px;
+  margin: 0 auto;
+}
+.type-img-0, .type-img-1, .type-img-2{
+  width: 230px;
+  height: 326px;
+  background:pink;
+  float: left;
+  background: no-repeat center;
+  background-size: cover;
+}
+.type-img-1{
+  margin:auto 72px;
+}
+.type-footer{
+  height: 62px;
+  width: 948px;
+  padding-left: 57px;
+  padding-right: 57px;
+  margin: 0 auto;
+}
+.type-img-describe-0, .type-img-describe-1, .type-img-describe-2{
+  height: 62px;
+  width: 230px;
+  /*background: magenta;*/
+  float: left;
+}
+.type-img-describe-1{
+  margin:auto 72px;
+}
+.type-img-name{
+  font-size: 2.4em;
+  text-align: center;
+  color: #ffffff;
+}
+.type-img-author{
+  font-size: 1.8em;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 8px;
+}
+#type-index{
+  height: 48px;
+  /*width: calc( 72px + 66px * 2 );*/
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+.page-number{
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: rgba(255,255,255,0.8);
+  float: left;
+  margin-right: 42px;
+  text-align: center;
+  line-height: 24px;
+  color: #ffffff;
+  font-size: 0;
+  transition: all 300ms;
+  -webkit-transition: all 300ms;
+}
+.page-number:last-of-type{
+  margin-right: auto;
+}
+.page-selected{
+  height: 24px;
+  width: 72px;
+  background-color: #f96520;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 1.8em;
+  color: #ffffff;
+}
+.book-search-letter{
+  height: 42px;
+  width: 184px;
+  color: #666666;
+  font-size: 3.6em;
+  text-align: center;
+  line-height: 42px;
+  border-radius: 6px;
+}
+.letter-selected{
+  background:#f96621;
+  color: #ffffff;
+}
+.type-name-btn{
+  width: 200px;
+  height: 72px;
+  margin-left: 87px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  font-size: 3.2em;
+  color: #666666;
+  text-align: center;
+  line-height: 72px;
+  background-color: #ffffff;
+  display: inline-block;
+  box-shadow: 0 5px 7px rgba(204,204,204,0.5);
+  overflow: hidden;
+}
+.type-name-btn-selected{
+  background-color: #f96621;
+  color: #ffffff;
+  box-shadow: none;
+}
+.title-btn-selected{
+  background: rgba(255,255,255,0.3);
+  color: #ffffff;
+}
+
+
+/******************************************    图书详细信息样式    **************************************************/
+#book-detail-message-float-layout{
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+#book-detail-message{
+  width: 854px;
+  height: 1222px;
+  margin: 318px auto;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 66px 72px;
+}
+#book-qr-code{
+  width: 100%;
+  height: 342px;
+  border-bottom: 1px solid #cccccc;
+}
+#book-qr-code-img{
+  height: 206px;
+  width: 206px;
+  background: yellow;
+  margin: 0 auto;
+}
+#book-qr-code-text{
+  font-size: 3.2em;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 66px;
+  height: 27px;
+  line-height: 27px;
+  color: #666666;
+}
+#book-message{
+  height: 550px;
+  width: 100%;
+  padding-top: 66px;
+  padding-bottom: 42px;
+}
+#book-img{
+  height: 442px;
+  width: 312px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  float: left;
+  background: no-repeat center;
+  background-size: cover;
+}
+#book-data-message{
+  height: 442px;
+  width: 322px;
+  float: left;
+  margin-left: 72px;
+  padding-top: 90px;
+}
+#book-name-message{
+  font-size: 4.0em;
+  color: #333333;
+  margin-bottom: 20px;
+}
+#book-author-message{
+  font-size: 2.4em;
+  color: #333333;
+  margin-bottom: 40px;
+}
+#book-publication-date, #book-publishing-house, #book-page-length{
+  font-size: 2.4em;
+  color: #333333;
+  margin-bottom: 20px;
+}
+#book-content-validity-title{
+  height: 45px;
+  font-size: 3.2em;
+  color: #333333;
+  line-height: 45px;
+  background: url("../images/bookValidity.png") no-repeat;
+  padding-left: 32px;
+  margin-bottom: 20px;
+}
+#book-content-validity{
+  font-size: 2.8em;
+  color: #333333;
+  height: 133px;
+  overflow: hidden;
+  letter-spacing: 1.4px;
+  line-height: 34px;
+  display: box;
+  display: -webkit-box;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+}
